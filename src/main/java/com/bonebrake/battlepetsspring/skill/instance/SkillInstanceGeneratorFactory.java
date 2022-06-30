@@ -1,7 +1,6 @@
 package com.bonebrake.battlepetsspring.skill.instance;
 
 import com.bonebrake.battlepetsspring.skill.Skills;
-import com.bonebrake.battlepetsspring.skill.implementations.Skill;
 import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
@@ -10,10 +9,10 @@ import java.util.*;
 @Component
 public class SkillInstanceGeneratorFactory {
 	
-	private final Map<Skill, SkillInstance> skillInstanceMap = new HashMap<>();
+	private final Map<Skills, SkillInstance> skillInstanceMap = new EnumMap<>(Skills.class);
 	
 	public SkillInstanceGeneratorFactory(List<SkillInstance> skillInstances) {
-		skillInstances.forEach(skillInstance -> skillInstanceMap.put(skillInstance.getSkill(), skillInstance));
+		skillInstances.forEach(skillInstance -> skillInstanceMap.put(skillInstance.getSkill().getSkillEnum(), skillInstance));
 	}
 	
 	/**
@@ -22,7 +21,7 @@ public class SkillInstanceGeneratorFactory {
 	 * @param skill Skill used to create an instance
 	 * @return New skill instance object
 	 */
-	public SkillInstance getSkillInstance(Skill skill) {
+	public SkillInstance getSkillInstance(Skills skill) {
 		return new SkillInstance(skillInstanceMap.get(skill));
 	}
 	
@@ -31,11 +30,10 @@ public class SkillInstanceGeneratorFactory {
 	 *
 	 * @return Set of all skills available
 	 */
-	@Bean
 	public Map<Skills, SkillInstance> getAllSkillInstances() {
 		
 		Map<Skills, SkillInstance> instanceMap = new EnumMap<>(Skills.class);
-		skillInstanceMap.forEach((key, value) -> instanceMap.put(key.getSkillEnum(), new SkillInstance(value)));
+		skillInstanceMap.forEach((key, value) -> instanceMap.put(key, new SkillInstance(value)));
 		return instanceMap;
 	}
 }

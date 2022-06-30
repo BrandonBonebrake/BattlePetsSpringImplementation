@@ -3,6 +3,7 @@ package com.bonebrake.battlepetsspring.skill;
 import com.bonebrake.battlepetsspring.skill.implementations.Skill;
 import org.springframework.stereotype.Component;
 
+import java.util.Collections;
 import java.util.EnumMap;
 import java.util.List;
 import java.util.Map;
@@ -18,5 +19,12 @@ public class SkillFactory {
 	
 	public Skill getSkill(Skills skillsEnum) {
 		return skillMap.get(skillsEnum);
+	}
+	
+	/**
+	 * @return A map that is read-only
+	 */
+	public Map<Skills, Skill> getSkillMap() {
+		return Collections.unmodifiableMap(skillMap);
 	}
 }
