@@ -1,0 +1,13 @@
+package com.bonebrake.battlepetsspring.skill.instance;
+
+import com.bonebrake.battlepetsspring.skill.implementations.Skill;
+import com.bonebrake.battlepetsspring.skill.recharge.SkillRecharge;
+import org.springframework.beans.factory.annotation.Qualifier;
+import org.springframework.stereotype.Component;
+
+@Component
+public class ScissorsPokeInstance extends SkillInstance {
+	public ScissorsPokeInstance(@Qualifier("scissorsPoke") Skill skill) {
+		super(skill, new SkillRecharge(1));
+	}
+}
