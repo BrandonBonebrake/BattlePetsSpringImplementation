@@ -2,6 +2,7 @@ package com.bonebrake.battlepetsspring.player;
 
 import com.bonebrake.battlepetsspring.skill.Skills;
 import com.bonebrake.battlepetsspring.skill.instance.SkillInstance;
+import com.bonebrake.battlepetsspring.utils.UuidGenerator;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Component;
@@ -15,7 +16,7 @@ import java.util.UUID;
 public abstract class PetInstance implements Playable {
 	
 	private final Map<Skills, SkillInstance> skillInstances;
-	private final UUID playableUid;
+	private final int playableUid = UuidGenerator.generateUuidInt();
 	private final String playerName;
 	private final String petName;
 	private final PlayerTypes playerType;

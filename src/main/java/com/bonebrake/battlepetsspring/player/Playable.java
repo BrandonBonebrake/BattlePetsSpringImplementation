@@ -15,7 +15,7 @@ public interface Playable extends Observer
 		return Set.of(Skills.values());
     }
 
-    UUID getPlayableUid();
+    int getPlayableUid();
 
 	String getPlayerName();
 	String getPetName();

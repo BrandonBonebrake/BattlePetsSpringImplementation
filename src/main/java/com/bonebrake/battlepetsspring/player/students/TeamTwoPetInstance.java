@@ -8,12 +8,11 @@ import com.bonebrake.battlepetsspring.skill.instance.SkillInstance;
 import org.springframework.stereotype.Component;
 
 import java.util.Map;
-import java.util.UUID;
 
 @Component
 public class TeamTwoPetInstance extends PetInstance {
-	public TeamTwoPetInstance(Map<Skills, SkillInstance> skillInstances, UUID playableUid) {
-		super(skillInstances, playableUid, "Team Dos", "Crumb Covered Pet 2", PlayerTypes.TEAM_TWO, PetTypes.SPEED, 100);
+	public TeamTwoPetInstance(Map<Skills, SkillInstance> skillInstances) {
+		super(skillInstances, "Team Dos", "Crumb Covered Pet 2", PlayerTypes.TEAM_TWO, PetTypes.SPEED, 100);
 	}
 	
 	@Override

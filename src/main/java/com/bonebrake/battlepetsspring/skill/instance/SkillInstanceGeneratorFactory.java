@@ -1,7 +1,6 @@
 package com.bonebrake.battlepetsspring.skill.instance;
 
 import com.bonebrake.battlepetsspring.skill.Skills;
-import org.springframework.context.annotation.Bean;
 import org.springframework.stereotype.Component;
 
 import java.util.*;
